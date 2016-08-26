@@ -24,5 +24,6 @@ void queue_enqueue(int new_pay_load); // push to queue
 struct node *queue_dequeue();         // pop from queue
 
 int get_queue_size();                 // amount of nodes 
+void queue_print();
 
 #endif
