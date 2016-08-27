@@ -1,12 +1,12 @@
 #include "queue.h"
 
-struct queue test_queue;
+queue_t test_queue;
 
-struct node *create_node(int value)
+node_t *create_node(int value)
 {
-    struct node *new_node = NULL;
+    node_t *new_node = NULL;
 
-    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node = (node_t *)malloc(sizeof(node_t));
     if (!new_node) {
         fprintf(stderr, "ERROR, can't allocate memory for new node\n");
         return NULL;
@@ -28,7 +28,7 @@ void queue_init()
 void queue_clear()
 {
     while(test_queue.size > 0) {
-        struct node *node = queue_dequeue();
+        node_t *node = queue_dequeue();
         free(node);
     }
 
@@ -37,8 +37,8 @@ void queue_clear()
 
 void queue_enqueue(int new_pay_load)
 {
-    struct node *old_tail = test_queue.tail;
-    struct node *new_node = NULL;
+    node_t *old_tail = test_queue.tail;
+    node_t *new_node = NULL;
 
     new_node = create_node(new_pay_load);
     if (new_node == NULL) {
@@ -58,8 +58,8 @@ void queue_enqueue(int new_pay_load)
 
 struct node *queue_dequeue()
 {
-    struct node *dequeue_node = NULL;
-    struct node *new_head = NULL;
+    node_t *dequeue_node = NULL;
+    node_t *new_head = NULL;
 
     if (test_queue.size == 0) {
         fprintf(stderr, "ERROR: can't dequeue, queue is empty\n");
@@ -83,7 +83,7 @@ int get_queue_size()
 
 void queue_print()
 {
-    struct node *ptr = test_queue.head;
+    node_t *ptr = test_queue.head;
 
     printf("\n");
 

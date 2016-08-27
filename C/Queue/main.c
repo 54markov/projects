@@ -1,7 +1,5 @@
 #include "queue.h"
 
-
-
 int main(int argc, char const *argv[])
 {
     int i;
