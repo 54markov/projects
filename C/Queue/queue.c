@@ -2,7 +2,7 @@
 
 queue_t test_queue;
 
-node_t *create_node(int value)
+node_t *create_node(void *value)
 {
     node_t *new_node = NULL;
 
@@ -13,14 +13,14 @@ node_t *create_node(int value)
     }
 
     new_node->pay_load = value;
-    new_node->next = NULL;
+    new_node->next     = NULL;
 
     return new_node;
 }
 
 void queue_init()
 {
-    test_queue.size  = 0;
+    test_queue.size = 0;
     test_queue.head = NULL;
     test_queue.tail = NULL;
 }
@@ -28,14 +28,15 @@ void queue_init()
 void queue_clear()
 {
     while(test_queue.size > 0) {
-        node_t *node = queue_dequeue();
-        free(node);
+        void *ptr = queue_dequeue();
+        free((int *)ptr);
     }
 
     queue_init();
 }
 
-void queue_enqueue(int new_pay_load)
+/* push to queue */
+void queue_enqueue(void *new_pay_load)
 {
     node_t *old_tail = test_queue.tail;
     node_t *new_node = NULL;
@@ -56,10 +57,12 @@ void queue_enqueue(int new_pay_load)
     test_queue.size += 1;
 }
 
-struct node *queue_dequeue()
+/* Pop from queue */
+void *queue_dequeue()
 {
+    void *remove_value   = NULL;
     node_t *dequeue_node = NULL;
-    node_t *new_head = NULL;
+    node_t *new_head     = NULL;
 
     if (test_queue.size == 0) {
         fprintf(stderr, "ERROR: can't dequeue, queue is empty\n");
@@ -73,7 +76,11 @@ struct node *queue_dequeue()
     test_queue.head = new_head;
     test_queue.size -= 1;
     
-    return dequeue_node;
+    remove_value = dequeue_node->pay_load;
+
+    free(dequeue_node);
+
+    return remove_value;
 }
 
 int get_queue_size()
@@ -88,7 +95,7 @@ void queue_print()
     printf("\n");
 
     while(ptr) {
-        printf("\tnode = %d\n", ptr->pay_load);
+        printf("\tnode = %d\n", *((int *)ptr->pay_load));
         ptr = ptr->next;
     }
     

@@ -7,15 +7,21 @@ int main(int argc, char const *argv[])
     queue_init();
 
     for (i = 0; i < 10; i++) {
-        queue_enqueue(i);
+        int *new_value = (int *)malloc(sizeof(int));
+        if (new_value) {
+            *new_value = i;
+            queue_enqueue((void *)new_value);
+        }
     }
 
     queue_print();
 
     printf("size = %d\n", get_queue_size());
 
-    struct node *ptr = queue_dequeue();
-
+    void *ptr = queue_dequeue();
+    
+    printf("\t\tptr = %d\n", *((int *)ptr));
+    
     free(ptr);
 
     queue_print();
