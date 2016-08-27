@@ -6,21 +6,21 @@
 #include <iostream>
 #include <vector>
 
-#define COLOR_YEL "\033[43m" // yellow
-#define COLOR_OFF "\033[0m"	// reset
+#define COLOR_YEL "\033[43m" // yellow background
+#define COLOR_OFF "\033[0m"  // reset
 
 enum
 {
-	GAME_CELL_STATE_EMPTY = -1,
-	GAME_CELL_STATE_TAKEN = 0,
-	GAME_CELL_STATE_MISS = 1,
-	GAME_CELL_STATE_HIT = 2
+    GAME_CELL_STATE_EMPTY = -1,
+    GAME_CELL_STATE_TAKEN = 0,
+    GAME_CELL_STATE_MISS  = 1,
+    GAME_CELL_STATE_HIT   = 2
 };
 
 enum
 {
-	GAME_ACTION_MISS = 0,
-	GAME_ACTION_HIT = 1
+    GAME_ACTION_MISS = 0,
+    GAME_ACTION_HIT  = 1
 };
 
 class GameCell
@@ -61,6 +61,5 @@ class GameField
         void create_and_place_small_ship(); 
         int makeAction(int x, int y);
 };
-
 
 #endif

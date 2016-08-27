@@ -1,5 +1,5 @@
 /*
- * Desciption
+ * Desciption game filed abstraction
  */
 
 #include "GameField.h"

@@ -29,15 +29,15 @@ class GameSession
     
     public:
         GameSession() {
-            microShipsSize_     = 4;
-            smallShipsSize_     = 3;
-            mediumShipsSize_    = 2;
-            largeShipsSize_     = 1;
+            microShipsSize_  = 4;
+            smallShipsSize_  = 3;
+            mediumShipsSize_ = 2;
+            largeShipsSize_  = 1;
 
-            microShipsKill_     = 0;
-            smallShipsKill_     = 0;
-            mediumShipsKill_    = 0;
-            largeShipsKill_     = 0;
+            microShipsKill_  = 0;
+            smallShipsKill_  = 0;
+            mediumShipsKill_ = 0;
+            largeShipsKill_  = 0;
 
         }
 
