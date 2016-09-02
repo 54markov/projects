@@ -1,11 +1,26 @@
-#ifndef _GAME_FILED_H_
-#define _GAME_FILED_H_
+#ifndef _GAME_FIELD_H_
+#define _GAME_FIELD_H_
 
-#include <iostream>
 #include <vector>
 
-#include <mutex>
-#include <thread>
-#include <chrono>
+#include "Color.h"
+#include "KeyBoardHandle.h"
 
-#endif
+class GameField
+{
+    private:
+        std::vector<std::vector<int>> gameField_;
+        KeyBoardHandle                keyBoardHandle_;
+        Color                         color_;
+
+    public:
+        GameField();
+        ~GameField();
+
+        void run();
+        void logic();
+        void draw();
+        void clearScreen();
+};
+
+#endif /* _GAME_FIELD_H_ */
